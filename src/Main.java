@@ -1,15 +1,57 @@
+import java.util.Scanner;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    creatMatrix();
+    }
+    public static char [] inputRoute (){
+        Scanner vvod = new Scanner(System.in);
+        String route = vvod.nextLine();
+        char[] m1 = new char [route.length()];
+        for (int i = 0; i < route.length(); i++) {
+            m1[i]= route.charAt(i);
+        }
+        //System.out.println(m1);
+        return m1;
+    }
+    public static int routeLen (char m[]){
+        int l = 0;
+        for (int i = 0; i < m.length; i++) {
+            if (m[i] == 'S') l++;
+        }
+        return l;
+    }
+    public static int [] saveRoute (int matrix [][], char route[]){
+        int [] saveRoute = new int [routeLen(inputRoute())];
+        for (int i = matrix.length/2; i < matrix.length/2+1; ) {
+            for (int j = matrix.length/2; j < matrix[i].length/2+1; ) {
+                saveRoute[0]=matrix[matrix.length/2][matrix[i].length/2];
+                for (int k = 1; k < route.length; k++) {
+                    if (route[i]=='S'){
+                        i++; saveRoute[i]=matrix[i][j];
+                    }
+                    if (route[i]=='R'){
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+                    }
+            }
+        }
+    }
+    public static int analizeRoute (int m[], int m1[][]) {
+
+    }
+
+    public static int[][] creatMatrix() {
+            int qCol= routeLen(inputRoute())+1;int qRow=qCol;
+            int[][] m1 = new int[qRow][qCol];
+            int filling = -1;
+            for (int i = 0; i < qCol; i++) {
+                for (int j = 0; j < qRow; j++) {
+                     m1[i][j] = filling++;
+                }
+            }
+            return m1;
         }
     }
 }
